@@ -77,7 +77,7 @@ function showAnswer(a){
 	if(a){
 		document.getElementById("code").className += ' success';
 	}else{
-		document.getElementById("code").className += 'failure';
+		document.getElementById("code").className += ' failure';
 	}
 }
 
