@@ -4,22 +4,27 @@ let attempt = document.getElementById('attempt');
 function guess() {
     let input = document.getElementById('user-guess');
     //add functionality to guess function here
-    if (answer = ''; && attempt = '';){
+    if (!answer && !attempt){
 	setHiddenFields();
+	}
+	if (validateInput(input.value)){
+		attempt++;
+	}else{
+		return false;
 	}
 }
 
 //implement new functions here
 function setHiddenFields() {
-	answer = Math.floor(Math.random() * (10000 - 0));
-	while (answer.length < 4){
-		answer.toString().prepend('0');
+	answer.value = Math.floor(Math.random() * 10000);
+	while (answer.value.length < 4){
+		answer.value = '0' + answer.value;
 	}
 	attempt = 0;
 	return answer;
 }
 function setMessage(messageP){
-	message.innerHTML(messageP); 
+	message.innerHTML = messageP; 
 }
 function validateInput(input){
 	if (input.length<4){
@@ -30,8 +35,3 @@ function validateInput(input){
 	}
 }
 
-if (validateInput(input.value)){
-	attempt++;
-}else{
-	return false;
-}
