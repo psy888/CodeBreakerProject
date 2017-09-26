@@ -77,9 +77,9 @@ function getResults(input){
 function showAnswer(a){
 	code.innerHTML = answer.value;
 	if(a){
-		code.addClass(' success');
+		document.getElementById("code").addClass(' success');
 	}else{
-		code.addClass(' failure');
+		document.getElementById("code").addClass(' failure');
 	}
 }
 
