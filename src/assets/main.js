@@ -4,14 +4,18 @@ let attempt = document.getElementById('attempt');
 function guess() {
     let input = document.getElementById('user-guess');
     //add functionality to guess function here
-    if (!answer && !attempt){
+    if ((answer.value == '') && (attempt.value == '')){
 	setHiddenFields();
+	console.log('Answer Set!');
 	}
 	if (validateInput(input.value)){
-		return attempt++;
+		attempt.value++;
+		console.log('attempt' + attempt.value);
 	}else{
 		return false;
 	}
+	getResults(input.value);
+
 }
 
 //implement new functions here
@@ -20,7 +24,7 @@ function setHiddenFields() {
 	while (answer.value.length < 4){
 		answer.value = '0' + answer.value;
 	}
-	attempt = 0;
+	attempt.value = 0;
 	return answer;
 }
 function setMessage(messageP){
@@ -36,5 +40,32 @@ function validateInput(input){
 	}
 }
 function getResults(input){
+	let divBegin = '<div class="row"><span class="col-md-6">';
+	let divEnd = '</span><div class="col-md-6">';
+	let result = '';
+	let guessed = 0;
+	
+		for (var i = 0; i <= 3; i++) {
+			if(input[i] == answer.value[i]){
+				result += '<span class="glyphicon glyphicon-ok"></span>';
+				guessed++;
+			}else if(answer.value.indexOf(input[i]) != -1){
+				result += '<span class="glyphicon glyphicon-transfer"></span>';
+			} else{
+				result += '<span class="glyphicon glyphicon-remove"></span>';
+			}
+		}
+		results.innerHTML += '<br>' + divBegin + input + divEnd + divBegin + result + divEnd;
+	
 
+	if( guessed == 4){
+		setMessage('You Win!');
+		return true;
+	}else {
+		if(attempt >= 10){
+		setMessage('You Lose! :(');
+		return false;
+		}
+		
+	}
 }
