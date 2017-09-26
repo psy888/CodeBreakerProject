@@ -15,11 +15,15 @@ function guess() {
 		return false;
 	}
 	if(getResults(input.value)){
-		setMessage('You Win!');
+		setMessage('You Win! :)');
+		showReplay();
+		showAnswer(true);
+	}else if(attempt.value >= 10){
+		setMessage('You Lose! :(');
+		showReplay();
+		showAnswer(false);
 	}else{
-		if(attempt.value >= 10){
-			setMessage('You Lose! :(');
-		}
+		setMessage('Incorrect, try again.');
 	}
 
 }
@@ -69,4 +73,17 @@ function getResults(input){
 	}else {
 		return false;
 	}
+}
+function showAnswer(a){
+	code.innerHTML = answer.value;
+	if(a){
+		code.addClass(' success');
+	}else{
+		code.addClass(' failure');
+	}
+}
+
+function showReplay(){
+	guessing-div.style.display = 'none';
+	replay-div.style.display = 'block';
 }
