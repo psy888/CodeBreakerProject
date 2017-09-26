@@ -27,8 +27,6 @@ function setMessage(messageP){
 	message.innerHTML = messageP; 
 }
 function validateInput(input){
-	console.log(input.value);
-	console.log(input.value.length);
 	if (input.value.length == 4){
 		setMessage('');
 		return true;
