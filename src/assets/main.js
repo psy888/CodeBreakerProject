@@ -7,7 +7,7 @@ function guess() {
     if (!answer && !attempt){
 	setHiddenFields();
 	}
-	if (validateInput(input)){
+	if (validateInput(input.value)){
 		return attempt++;
 	}else{
 		return false;
@@ -27,7 +27,7 @@ function setMessage(messageP){
 	message.innerHTML = messageP; 
 }
 function validateInput(input){
-	if (input.value.length == 4){
+	if (input.length == 4){
 		setMessage('');
 		return true;
 	}else{
