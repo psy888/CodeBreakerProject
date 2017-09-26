@@ -5,12 +5,10 @@ function guess() {
     let input = document.getElementById('user-guess');
     //add functionality to guess function here
     if ((answer.value == '') && (attempt.value == '')){
-	setHiddenFields();
-	console.log('Answer Set!');
+		setHiddenFields();
 	}
 	if (validateInput(input.value)){
 		attempt.value++;
-		console.log('attempt' + attempt.value);
 	}else{
 		return false;
 	}
@@ -77,9 +75,9 @@ function getResults(input){
 function showAnswer(a){
 	code.innerHTML = answer.value;
 	if(a){
-		document.getElementById("code").addClass(' success');
+		document.getElementById("code").className += ' success';
 	}else{
-		document.getElementById("code").addClass(' failure');
+		document.getElementById("code").className += 'failure';
 	}
 }
 
