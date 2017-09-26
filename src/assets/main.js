@@ -84,6 +84,6 @@ function showAnswer(a){
 }
 
 function showReplay(){
-	guessing-div.style.display = 'none';
-	replay-div.style.display = 'block';
+	document.getElementById("guessing-div").style.display = 'none';
+	document.getElementById("replay-div").style.display = 'block';
 }
